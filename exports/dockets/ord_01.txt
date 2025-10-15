@@ -1,0 +1,7 @@
+Little Joe's
+Order #ord_01
+Customer: Gill Means (Wynum)
+Items:
+  2x Margherita ($14.00)
+Driver: Mia Rossi
+Total: $28.00

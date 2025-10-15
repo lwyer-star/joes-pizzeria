@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Generate a New Daily Summary</h1>
+  <p>
+    Enter a date to calculate the summary from the orders in Cosmos DB and save it to the SQL database.
+  </p>
+  <p>
+    Note: If a summary for this date already exists, it will be updated with the latest calculations.
+  </p>
+
+  <form method="POST" action="{{ url_for('generate_summary') }}">
+    <label for="summary_date">Date:</label>
+    <input type="date" id="summary_date" name="summary_date" required>
+    <button type="submit">Generate and Save Summary</button>
+  </form>
+{% endblock %}
+

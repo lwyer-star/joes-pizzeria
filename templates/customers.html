@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Customers</h1>
+  {% if not customers %}
+    <p>No customers found. Add some via the console app.</p>
+  {% else %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Suburb</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in customers %}
+          <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.phone or 'N/A' }}</td>
+            <td>{{ c.suburb }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

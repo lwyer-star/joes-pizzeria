@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Drivers</h1>
+  {% if not rows %}
+    <p>No drivers found. Add some via the console app or Azure Data Explorer.</p>
+  {% else %}
+    <table>
+      <tr><th>id</th><th>name</th><th>suburbs</th><th>rate</th></tr>
+      {% for r in rows %}
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>{{ r.name }}</td>
+          <td>{{ (r.suburbs or [])|join(", ") }}</td>
+          <td>{{ "%.2f"|format(r.commissionRate or 0) }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+{% endblock %}

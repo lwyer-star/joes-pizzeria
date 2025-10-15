@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Create a New Order</h1>
+
+  <form method="POST" style="max-width: 500px;">
+    
+    <fieldset style="border: 1px solid #ccc; padding: 1rem; border-radius: 5px;">
+      <legend style="padding: 0 0.5rem;">Customer</legend>
+      <label for="customer_id">Enter existing Customer ID:</label><br>
+      <input type="text" id="customer_id" name="customer_id" required placeholder="e.g., cus_01" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+    </fieldset>
+
+    <br>
+
+    <fieldset style="border: 1px solid #ccc; padding: 1rem; border-radius: 5px;">
+      <legend style="padding: 0 0.5rem;">Pizzas</legend>
+      <p>Enter the quantity for each pizza.</p>
+      
+      <label for="qty_marg">Margherita ($14.00):</label>
+      <input type="number" id="qty_marg" name="qty_marg" min="0" value="0" style="width: 60px; padding: 5px;">
+      <br><br>
+
+      <label for="qty_pepp">Pepperoni ($17.00):</label>
+      <input type="number" id="qty_pepp" name="qty_pepp" min="0" value="0" style="width: 60px; padding: 5px;">
+      <br><br>
+
+      <label for="qty_supr">Super Supreme ($19.50):</label>
+      <input type="number" id="qty_supr" name="qty_supr" min="0" value="0" style="width: 60px; padding: 5px;">
+    </fieldset>
+
+    <br>
+    
+    <button type="submit" style="padding: 10px 15px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Place Order</button>
+  </form>
+{% endblock %}

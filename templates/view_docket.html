@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>View Docket</h1>
+
+  <form method="POST" action="{{ url_for('docket') }}" style="margin-bottom: 2rem;">
+    <label for="order_id">Enter Order ID to view its docket:</label>
+    <input type="text" id="order_id" name="order_id" placeholder="e.g., ord_...">
+    <button type="submit">View Docket</button>
+  </form>
+
+  {% if docket %}
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <h2>Docket for Order: {{ docket.orderId }}</h2>
+      <a href="{{ url_for('docket_pdf', order_id=docket.orderId) }}" style="text-decoration: none;">
+        <button>Download as PDF</button>
+      </a>
+    </div>
+    <pre style="background-color: #eee; padding: 1rem; border: 1px solid #ccc; white-space: pre-wrap;">{{ docket.rendered }}</pre>
+  {% elif request.method == 'POST' %}
+    <p style="color: #721c24;">No docket found for the provided Order ID.</p>
+  {% endif %}
+
+{% endblock %}
+

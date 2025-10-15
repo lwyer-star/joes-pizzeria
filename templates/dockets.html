@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block page_title %}Dockets{% endblock page_title %}
+{% block page_h1 %}Dockets{% endblock page_h1 %}
+{% block page_content %}
+<form method="get" action="/dockets">
+  <label>Order ID:
+    <input name="orderId" value="{{ order_id or '' }}" />
+  </label>
+  <button type="submit">Load</button>
+</form>
+
+{% if docket %}
+  <h2>Docket for {{ docket.orderId }}</h2>
+  <pre class="mono">{{ docket.rendered }}</pre>
+{% elif order_id %}
+  <p>No docket for order <strong>{{ order_id }}</strong>.</p>
+{% endif %}
+{% endblock page_content %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Daily Summaries (from SQL Database)</h1>
+
+  {% if not summaries %}
+    <p>No daily summaries have been saved to the SQL database yet.</p>
+    <p>You can generate them using the command-line app (app.py).</p>
+  {% else %}
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Total Orders</th>
+          <th>Total Revenue</th>
+          <th>Most Popular Pizza</th>
+          <th>Driver Commission</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in summaries %}
+          <tr>
+            <!-- Ensure your dictionary keys match these names -->
+            <td>{{ s.summary_date }}</td>
+            <td>{{ s.total_orders }}</td>
+            <td>${{ "%.2f"|format(s.total_revenue) }}</td>
+            <td>{{ s.most_popular_pizza }}</td>
+            <td>${{ "%.2f"|format(s.total_driver_commission) }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}
+
